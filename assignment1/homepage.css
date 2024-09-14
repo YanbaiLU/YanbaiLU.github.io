@@ -124,7 +124,7 @@ button{
 
 .SignUpSec::before{
     content: " ";
-    width: 100%;
+    width: 1600px;
     height: 715px;
     position: absolute;
     z-index: -1;
