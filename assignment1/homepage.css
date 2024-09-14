@@ -266,7 +266,7 @@ button{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 1600px 1067px;
-    background-position: -50px 0px bottom;
+    /* background-position: -50px 0px bottom; */
 }
 
 #priceMask{
@@ -390,7 +390,7 @@ button{
 #tryFreeSec{
     width: 1600px;
     background: url(./resources/images/notebook.jpg) no-repeat;
-    /* background-position: 0px -287px; */
+    background-position: 0px -287px;
     height: 480px;
     background-size: cover;
     text-align: center;
