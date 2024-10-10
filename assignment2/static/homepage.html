@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+<div class="form-container">
+    <div class="form-box">
+        <div class="form-title-box">
+            <h2 class="form-title-box-l1">Weather Search</h2>
+            <h3 class="form-title-box-l2">Fill out the form to get weather info!</h3>
+        </div>
+        <form class="form-body-box" id="weatherForm">
+            <div class="input-group">
+                <label for="street">
+                    <div class="item-name better-blue">Street</div>
+                    <div class="star">*</div>
+                </label>
+                <input type="text" id="street" placeholder="Street" class="input-l1" required>
+            </div>
+            <div class="flex-space-between">
+                <div class="input-group">
+                    <label for="city">
+                        <div class="item-name better-blue">City</div>
+                        <div class="star">*</div>
+                    </label>
+                    <input type="text" id="city" placeholder="City" style="width: 245px; margin-top: 10px" required>
+                </div>
+                <div class="input-group">
+                    <label for="state">
+                        <div class="item-name better-blue">State</div>
+                        <div class="star">*</div>
+                    </label>
+                    <select id="state" style="width: 245px; margin-top: 10px" required>
+                        <option value="">Select your state</option>
+                        <option value="CA">California</option>
+                        <option value="NY">New York</option>
+                        <!-- Add more states as needed -->
+                    </select>
+                </div>
+            </div>
+            <hr class="hr-set better-blue">
+            <div class="input-group">
+                <label for="auto-detect" class="auto-loc better-blue">
+                    Want us to auto-detect your location? Check here<input type="checkbox" id="auto-detect">
+                </label>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="submit-btn better-bg-blue">SUBMIT</button>
+                <button type="reset" class="clear-btn better-bg-orange">CLEAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="error-box" class="better-blue">No records have been found</div>
+
+<div id="weatherAndTableHidden" class="results-container colored-border">
+    <div class="results-today-box">
+        <div id="location" class="location">
+            Loading location...
+        </div>
+        <div class="today-weather-info">
+            <div class="main-info">
+                <div class="weather-status-main">
+                    <img id="weather-img" class="weather-img-main"
+                         src="resources/Images/Weather%20Symbols%20for%20Weather%20Codes/clear_day.svg">
+                    <p id="weather-description">Loading...</p>
+                </div>
+                <div id="temperature" class="temperature-font">
+                    --°
+                </div>
+            </div>
+            <div class="details-main">
+                <div class="detail-item-main">
+                    <p>Humidity</p>
+                    <img src="resources/Images/humidity.png" alt="humidity">
+                    <p id="humidity">--%</p>
+                </div>
+                <div class="detail-item-main">
+                    <p>Pressure</p>
+                    <img src="resources/Images/Pressure.png" alt="pressure">
+                    <p id="pressure">--inHg</p>
+                </div>
+                <div class="detail-item-main">
+                    <p>Wind Speed</p>
+                    <img src="resources/Images/Wind_Speed.png" alt="wind speed">
+                    <p id="wind-speed">--mph</p>
+                </div>
+                <div class="detail-item-main">
+                    <p>Visibility</p>
+                    <img src="resources/Images/Visibility.png" alt="visibility">
+                    <p id="visibility">--mi</p>
+                </div>
+                <div class="detail-item-main">
+                    <p>Cloud Cover</p>
+                    <img src="resources/Images/Cloud_Cover.png" alt="cloud cover">
+                    <p id="cloud-cover">--%</p>
+                </div>
+                <div class="detail-item-main">
+                    <p>UV Level</p>
+                    <img src="resources/Images/UV_Level.png" alt="UV Level">
+                    <p id="uv-level">--</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tableHidden" class="tableContainer">
+        <table>
+            <thead class="table-head better-bg-blue">
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Temp High</th>
+                <th>Temp Low</th>
+                <th>Wind Speed</th>
+            </tr>
+            </thead>
+            <tbody id="weather-table"></tbody>
+        </table>
+    </div>
+
+    <div id="weatherDetails" class="weatherDetails">
+        <div class="weatherDetailFont"> Daily Weather Details</div>
+        <div class="weather-card">
+            <h2 id="weatherDate"></h2>
+            <p id="weatherStatus"></p>
+            <p id="weatherTemp"></p>
+            <p id="weatherPrecipitation"></p>
+            <p id="weatherRain"></p>
+            <p id="weatherWind"></p>
+            <p id="weatherHumidity"></p>
+            <p id="weatherVisibility"></p>
+            <p id="weatherSunrise"></p>
+            <p id="weatherSunset"></p>
+        </div>
+        <div class="weatherDetailFont">Weather Charts</div>
+        <img id="pointDown" src="resources/Images/point-down-512.png"/>
+    </div>
+</div>
+
+<script src="homepage.js"></script>
+</body>
+</html>

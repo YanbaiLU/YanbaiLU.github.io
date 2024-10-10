@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.better-blue {
+    color: #3f51b5;
+}
+
+.better-bg-blue {
+    background-color: #3f51b5;
+}
+
+.better-orange {
+    color: darkorange;
+}
+
+.better-bg-orange {
+    background-color: darkorange;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.colored-border {
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    width: 1600px;
+}
+
+.form-box {
+    width: 600px;
+    height: 450px;
+    background-color: #fff;
+
+    margin-top: 50px;
+
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-title-box {
+    height: 125px;
+    width: 100%;
+    background-image: url("./resources/Images/banner.jpg");
+    background-position-x: 0px;
+    background-position-y: -80px;
+    padding-top: 25px;
+    padding-left: 40px;
+}
+
+.form-title-box-l1 {
+    color: #666666;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.form-title-box-l2 {
+    font-weight: normal;
+}
+
+.form-body-box {
+    padding-left: 40px;
+    padding-top: 25px;
+    padding-right: 30px;
+}
+
+.item-name {
+    float: left;
+}
+
+.star {
+    color: red;
+    float: left;
+}
+
+.input-l1 {
+    width: 100%;
+    margin-top: 10px
+}
+
+.input-l2 {
+    width: 400px;
+    margin-top: 10px
+}
+
+.input-l22 {
+    width: 200px;
+    margin-top: 10px
+}
+
+.auto-loc {
+    font-size: larger;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    /*text-align: left;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-set {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 1px;
+}
+
+label {
+    display: block;
+    color: #333;
+    /*margin-bottom: 5px;*/
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-group {
+
+}
+
+.submit-btn {
+    margin: 0px;
+    padding: 0px;
+    width: 115px;
+    height: 45px;
+    color: #fff;
+    box-shadow: 0px 3px blue;
+}
+
+.clear-btn {
+    margin: 0px;
+    padding: 0px;
+    width: 100px;
+    height: 45px;
+    color: #fff;
+    box-shadow: 0px 3px orange;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#weatherAndTableHidden {
+    display: none;
+}
+
+#error-box{
+    display: none;
+    margin: -30px auto;
+    padding: 8px;
+    width: 600px;
+    height: 35px;
+    background-color: white;
+    text-align: center;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 1600px;
+    align-items: center;
+    /*height: 57vh;*/
+    /*width: 800px;*/
+    /*background-color: #fff;*/
+    /*padding: 15px 30px 20px 30px;*/
+    /*margin: 50px;*/
+    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
+}
+
+.results-today-box {
+    height: 460px;
+    width: 50%;
+    background-color: #fff;
+    padding: 15px 30px 20px 30px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.results-today-box:hover {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.location {
+    font-size: 30px;
+    font-weight: lighter;
+    color: #666;
+    margin-bottom: 20px;
+
+}
+
+.today-weather-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 100px;
+}
+
+.weather-status-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-status-main p {
+    font-size: 22px;
+    color: gray;
+}
+
+.weather-img-main {
+    width: 150px;
+    height: 150px;
+}
+
+.temperature-font {
+    font-size: 125px;
+    font-weight: 100;
+    color: gray;
+}
+
+.details-main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.detail-item-main {
+    width: 100px;
+    text-align: center;
+}
+
+.detail-item-main p {
+    font-size: 17px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.detail-item-main img {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.icon-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-text i {
+    margin-right: 5px;
+    /*font-size: 20px;*/
+}
+
+.tableContainer {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#tableHidden {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 0px;
+    border-left: 1px solid #f5f5f5;
+    border-right: 1px solid #f5f5f5;
+    background-color: #fff;
+}
+
+tr {
+    /*border-spacing: 0px 10px;*/
+    /*border-style: solid;*/
+    /*border-color: gray;*/
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+th {
+    /*background-color: #3f51b5;*/
+    color: black;
+}
+
+td img {
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+}
+
+td {
+    color: #333;
+    border-top: 10px solid #f5f5f5;
+    height: 90px;
+}
+
+#weatherDetails {
+    display: none;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+.weather-card {
+    background: linear-gradient(to bottom, #f0f4ff, #a3b4f2);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    color: #333;
+}
+
+.weatherDetails {
+    margin: 10px auto;
+}
+
+.weatherDetailFont {
+    text-align: center;
+}
+
+#pointDown {
+    /*width: 50px;*/
+    height: 50px;
+    display: grid;
+    place-items: center;
+}
