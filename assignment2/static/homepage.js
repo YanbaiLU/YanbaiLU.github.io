@@ -13,7 +13,6 @@ const textFields = [
 // const state = document.getElementById('state').value;
 const checkbox = document.getElementById('auto-detect');
 let address;
-// let location;
 
 const statusToImg = {
     "Clear,Sunny": "clear_day.svg",
@@ -24,29 +23,48 @@ const statusToImg = {
     "Light Fog": "fog_light.svg",
     "Freezing Drizzle": "freezing_drizzle.svg",
     "Freezing Rain": "freezing_rain.svg",
-    "Freezing Rain Heavy": "freezing_rain_heavy.svg",
-    "Freezing Rain Light": "freezing_rain_light.svg",
+    "Heavy Freezing Rain": "freezing_rain_heavy.svg",
+    "Light Freezing Rain": "freezing_rain_light.svg",
     "Ice Pellets": "ice_pellets.svg",
-    "Ice Pellets Heavy": "ice_pellets_heavy.svg",
-    "Ice Pellets Light": "ice_pellets_light.svg",
-    "Light Wind": "light_wind.jpg",
-    "Mostly Clear Day": "mostly_clear_day.svg",
+    "Heavy Ice Pellets": "ice_pellets_heavy.svg",
+    "Light Ice Pellets": "ice_pellets_light.svg",
+    "Mostly Clear": "mostly_clear_day.svg",
     "Mostly Cloudy": "mostly_cloudy.svg",
-    "Partly Cloudy Day": "partly_cloudy_day.svg",
+    "Partly Cloudy": "partly_cloudy_day.svg",
     "Rain": "rain.svg",
-    "Rain Heavy": "rain_heavy.svg",
-    "Rain Light": "rain_light.svg",
+    "Heavy Rain": "rain_heavy.svg",
+    "Light Rain": "rain_light.svg",
     "Snow": "snow.svg",
-    "Snow Heavy": "snow_heavy.svg",
-    "Snow Light": "snow_light.svg",
-    "Strong-Wind": "strong-wind.png",
-    "Tstorm": "tstorm.svg",
-    "Wind": "wind.png"
+    "Heavy Snow": "snow_heavy.svg",
+    "Light Snow": "snow_light.svg",
+    "Thunderstorm": "tstorm.svg",
+    "Light Wind": "light_wind.jpg",//
+    "Wind": "wind.png",//
+    "Strong-Wind": "strong-wind.png"//
 }
 
-window.onload = function (){
-    checkbox.checked = false
+function web_reset() {
+    if (checkbox.checked) {
+        checkbox.checked = false;
+        let event = new Event('change');
+        checkbox.dispatchEvent(event);
+    }
+    document.getElementById('weatherAndTableHidden').style.display = 'none';
+    document.getElementById('weather-table').innerHTML = "";
+    document.getElementById('weatherDetails').style.display = 'none';
+    document.getElementById('tableHidden').style.display = 'block';
     document.getElementById('error-box').style.display = 'none';
+    document.getElementById('results-today-box').style.display = 'block';
+
+    let c_display = document.getElementById("charts-display");
+    if (c_display.style.display === 'block') {
+        document.getElementById("pointDown").src = "resources/Images/point-down-512.png";
+        c_display.style.display = 'none';
+    }
+}
+
+window.onload = function () {
+    web_reset();
 }
 
 checkbox.addEventListener('change', function () {
@@ -62,20 +80,15 @@ checkbox.addEventListener('change', function () {
 });
 
 document.getElementById('weatherForm').addEventListener('reset', function (event) {
-    if (checkbox.checked) {
-        checkbox.checked = false;
-        let event = new Event('change');
-        checkbox.dispatchEvent(event);
-    }
-    if (document.getElementById('weatherAndTableHidden').style.display === 'block') {
-        document.getElementById('weatherAndTableHidden').style.display = 'none';
-        document.getElementById('weather-table').innerHTML = "";
-    }
+    web_reset();
 })
 
 document.getElementById('weatherForm').addEventListener('submit', async function (event) {
         event.preventDefault();
+        document.getElementById('weatherAndTableHidden').style.display = 'none';
         document.getElementById('weather-table').innerHTML = "";
+        document.getElementById('weatherDetails').style.display = 'none';
+        document.getElementById('tableHidden').style.display = 'block';
 
         const street = document.getElementById('street').value;
         const city = document.getElementById('city').value;
@@ -101,7 +114,7 @@ document.getElementById('weatherForm').addEventListener('submit', async function
                     address = IPdata.city + ", " + IPdata.region
                     // city = IPdata.city
                     // state = IPdata.region
-                    alert('IP information fetched successfully!');
+                    // alert('IP information fetched successfully!');
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -137,12 +150,12 @@ document.getElementById('weatherForm').addEventListener('submit', async function
                         })
                         .catch((error) => {
                             console.error('Error:', error);
-                            alert('Failed to fetch geo information.');
+                            // alert('Failed to fetch geo information.');
                         })
                 });
         }
 
-        await sleep(2000);
+        await sleep(1500);
         let serverUrl = "http://127.0.0.1:5000/weatherdata?latitude=" + locData.lat + "&longitude=" + locData.lng;
         let dataList;
         console.log("serverurl:", serverUrl)
@@ -156,18 +169,21 @@ document.getElementById('weatherForm').addEventListener('submit', async function
             .then(data => {
                 // Handle the response from the backend
                 console.log('Success:', data);
-                data = data.results
+                let chart1Data = data.chart1Results;
+                data = data.results;
+                console.log('Success:', chart1Data);
                 displayWeatherData(data[0]);
-                displayWeatherDataTable(data);
+                displayWeatherDataTable(data, chart1Data, locData.lat, locData.lng);
                 const hiddenContent = document.getElementById('weatherAndTableHidden');
-                if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
-                    hiddenContent.style.display = 'block'; // 显示隐藏的内容
-                }
-                alert('Weather information fetched successfully!');
+                hiddenContent.style.display = 'block'; // 显示隐藏的内容
+                // if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
+                //     hiddenContent.style.display = 'block'; // 显示隐藏的内容
+                // }
+                // alert('Weather information fetched successfully!');
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('Failed to fetch weather information.');
+                // alert('Failed to fetch weather information.');
                 displayErrorStatement()
             });
     }
@@ -187,7 +203,7 @@ function displayWeatherData(data) {
     document.getElementById('uv-level').textContent = data.values.uvIndex;
 }
 
-function displayWeatherDataTable(data) {
+function displayWeatherDataTable(data, chart1Data, lat, lng) {
     // 为什么temperature和temperatureMax一样
     const weatherDataTable = [];
     for (let dataSec of data) {
@@ -209,8 +225,7 @@ function displayWeatherDataTable(data) {
     const tableBody = document.getElementById('weather-table');
     weatherDataTable.forEach(day => {
         const row = document.createElement('tr');
-        // let tempDate = day.date.replace(",", "，")
-        row.setAttribute("onclick", `showWeatherDetails('${day.date}', '${day.status}','${day.tempHigh}', '${day.tempLow}', '${day.windSpeed}', '${day.humidity}%', '${day.visibility} mi', '${day.precipitation}', '${day.rainChance}%', '${day.sunrise}', '${day.sunset}')`)
+        row.setAttribute("onclick", `showWeatherDetails('${day.date}', '${day.status}','${day.tempHigh}', '${day.tempLow}', '${day.windSpeed}', '${day.humidity}%', '${day.visibility} mi', '${day.precipitation}', '${day.rainChance}%', '${day.sunrise}', '${day.sunset}', '${chart1Data}', '${lat}', '${lng}')`)
         row.innerHTML = `
         <td>${day.date}</td>
         <td><img src="${day.icon}" alt="${day.status}" /> ${day.status}</td>
@@ -221,21 +236,118 @@ function displayWeatherDataTable(data) {
     });
 }
 
-function showWeatherDetails(date, status, highTemp, lowTemp, windSpeed, humidity, visibility, precipitation, rainChance, sunrise, sunset) {
+function showWeatherDetails(date, status, highTemp, lowTemp, windSpeed, humidity, visibility, precipitation, rainChance, sunrise, sunset, chart1Data, lat, lng) {
     document.getElementById('weatherDate').textContent = date;
     document.getElementById('weatherStatus').textContent = status;
-    document.getElementById('weatherTemp').textContent = `Temperature: ${highTemp}°F/${lowTemp}°F`;
-    document.getElementById('weatherPrecipitation').textContent = `Precipitation: ${precipitation}`;
-    document.getElementById('weatherRain').textContent = `Chance of Rain: ${rainChance}`;
-    document.getElementById('weatherWind').textContent = `Wind Speed: ${windSpeed} mph`;
-    document.getElementById('weatherHumidity').textContent = `Humidity: ${humidity}`;
-    document.getElementById('weatherVisibility').textContent = `Visibility: ${visibility}`;
-    document.getElementById('weatherSunrise').textContent = `Sunrise: ${sunrise}`;
-    document.getElementById('weatherSunset').textContent = `Sunset: ${sunset}`;
+    document.getElementById('card-head-img').src = `resources/Images/Weather%20Symbols%20for%20Weather%20Codes/${statusToImg[status]}`;
+    document.getElementById('weatherTemp').textContent = `${highTemp}°F/${lowTemp}°F`;
+    document.getElementById('weatherPrecipitation').textContent = `${precipitation}`;
+    document.getElementById('weatherRain').textContent = `${rainChance}`;
+    document.getElementById('weatherWind').textContent = `${windSpeed} mph`;
+    document.getElementById('weatherHumidity').textContent = `${humidity}`;
+    document.getElementById('weatherVisibility').textContent = `${visibility}`;
+    document.getElementById('weatherSunriseSunset').textContent = `${sunrise}/${sunset}`;
+    first_chart(chart1Data);
+    chart2_generation(lat, lng);
+    document.getElementById('results-today-box').style.display = 'none';
     document.getElementById('weatherDetails').style.display = 'block';
     document.getElementById('tableHidden').style.display = 'none';
+    window.scrollTo({
+        top: 400, // 滚动到的位置（单位：像素）
+    });
 }
 
-function displayErrorStatement(){
+function displayErrorStatement() {
     document.getElementById('error-box').style.display = 'block';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+        const button = document.getElementById("pointDown");
+        button.addEventListener("click", chart_display_status_change())});
+
+function chart_display_status_change() {
+    let c_display = document.getElementById("charts-display");
+    if (c_display.style.display === 'none') {
+        document.getElementById("pointDown").src = "resources/Images/point-up-512.png";
+        c_display.style.display = 'block';
+    } else {
+        document.getElementById("pointDown").src = "resources/Images/point-down-512.png";
+        c_display.style.display = 'none';
+    }
+    window.scrollTo({
+        top: 1300, // 滚动到的位置（单位：像素）
+    });
+}
+
+function first_chart(chart1Data) {
+    const chart1DataA = chart1Data.split(",").map(Number)
+    let chart1DataArr = chart1DataA.reduce((acc, curr, index) => {
+        if (index % 3 === 0) {
+            acc.push(chart1DataA.slice(index, index + 3));
+        }
+        return acc;
+    }, []);
+    console.log("chart1Data", chart1DataArr);
+    // [
+    //     [1483232400000, 1.4, 4.7],
+    //     [1483318800000, -1.3, 1.9],
+    //     [1483405200000, -0.7, 4.3],
+    //     [1483491600000, -5.5, 3.2],
+    //     [1483578000000, -9.9, -6.6],
+    //     [1483664400000, -9.6, 0.1],
+    //     [1483750800000, -0.9, 4.0],
+    //     [1483837200000, -2.2, 2.9]
+    // ]
+    Highcharts.chart('highcharts1-container', {
+        chart: {
+            renderTo: document.getElementById("highcharts1-container"),
+            type: 'arearange',
+            zooming: {
+                type: 'x'
+            },
+            scrollablePlotArea: {
+                minWidth: 600,
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Temperature Range (Min, Max)'
+        },
+        xAxis: {
+            type: 'datetime',
+            accessibility: {
+                rangeDescription: 'Range: next 15 days.'
+            }
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            valueSuffix: '°F',
+            xDateFormat: '%A, %b %e'
+        },
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Temperatures',
+            data: chart1DataArr,
+            color: {
+                linearGradient: {
+                    x1: 0,
+                    x2: 0,
+                    y1: 0,
+                    y2: 1
+                },
+                stops: [
+                    [0, '#FFA500'],
+                    [1, '#ADD8E6']
+                ]
+            }
+        }]
+    });
 }
