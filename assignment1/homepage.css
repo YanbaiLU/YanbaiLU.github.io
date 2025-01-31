@@ -1,0 +1,479 @@
+
+body{
+    width: 1600px;
+    margin: 0;
+    padding: 0;
+    /* border-right: 1px solid red; */
+    /* border-top: none; */
+}
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 100;
+  font-style: normal; */
+}
+
+.roboto-font{
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+}
+
+p{
+    font-family: "Montserrat", sans-serif;
+}
+
+button{
+    font-family: "Montserrat", sans-serif;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+#ceiling{
+    background-color: white;
+    width: 1600px;
+    height: 120px;
+    /* padding-top: 35px; */
+    /* margin-bottom:-10px; */
+    display: flex;
+    align-items: center;
+    /* border-style: solid;
+    border-color: red; */
+}
+
+#ceilingText{
+    width: 1600px;
+    margin: 0;
+    padding-left: 275px;
+    display: flex;
+    flex-direction: row;
+    /* border-style: solid;
+    border-color: green; */
+    text-align: center;
+}
+
+#menu_box{
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    /* border-style: solid;
+    border-color: green; */
+}
+
+#APS_box{
+    /* border-style: solid;
+    border-color: red; */
+    width: 200px;
+    height: 26px;
+    margin-left: 800px;
+    /* padding-top: 0.5%; */
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+#APS_font{
+    font-family: "Roboto", sans-serif;
+    color: lightgray;
+    padding-right: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    /* border-style: dotted;
+    border-color: red; */
+}
+
+#APS_font:hover{
+    color: black;
+}
+
+.link_dec{
+    text-decoration: none;
+    text-align: center;
+    color: lightgray;
+    line-height: normal;
+}
+
+.link_dec:hover{
+    color: black;
+}
+
+.SignUpSec{
+    width: 1600px;
+    height: 715px;
+    margin: 0;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.SignUpSec::before{
+    content: " ";
+    width: 1600px;
+    height: 715px;
+    position: absolute;
+    z-index: -1;
+    background: url(./resources/images/lawyer.jpg);
+    background-repeat: no-repeat;
+    filter: brightness(80%);
+    -webkit-filter: brightness(80%);
+}
+
+#SignUpBox{
+    background-color: rgb(27, 59, 91);
+    width: 340px;
+    height: 375px;
+    margin-top: 150px;
+    margin-left: 17%;
+    padding-top: 3%;
+    padding-left: 2%;
+    /* border-style: dotted;
+    border-color: red; */
+    display: flex;
+    flex-direction: column;
+}
+
+#SignUpBoxL1{
+    width: 60%;
+    color: white;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* border-style: dotted;
+    border-color: white; */
+}
+
+#SignUpBoxL234{
+    width: 80%;
+    color: white;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    /* border-style: dotted;
+    border-color: white; */
+}
+
+#SignUpBoxL5{
+    width: 60%;
+    color: rgb(245, 222, 78);
+    font-size: 12px;
+    font-style: italic;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    margin-top: 5%;
+}
+
+#SignUpBoxInput{
+    width: 80%;
+    height: 12%;
+    margin-top: 7%;
+}
+
+#SignUpBoxButton{
+    width: 60%;
+    height: 12%;
+    margin-top: 7%;
+    border: none;
+    background-color: rgb(245, 222, 78);
+}
+
+#introSec{
+    background-color: white;
+    width: 100%;
+    height: 250px;
+}
+
+#featuresBox{
+    /* border-style: dotted;
+    border-color: yellow; */
+    margin-left: 17%;
+    margin-right: 5%;
+    margin-top: 100px;
+    margin-bottom: 2%;
+    height: 55%;
+    display: flex;
+    flex-direction: row;
+}
+
+#featureBox{
+    width: 25%;
+    margin-right: 6%;
+    /* border-style: solid;
+    border-color: yellow; */
+}
+
+#featureBox > div:last-child{
+    margin-right: 0;
+}
+
+#featuerTitle{
+    color: black;
+}
+
+#featureDetail{
+    color: gray;
+    font-size: 11px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+#JohnSec{
+    background-color: rgb(244, 244, 244);
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding-top: 7%;
+}
+
+#JohnSecL2{
+    font-size: small; 
+    color: rgb(143, 143, 143); 
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+#priceSec{
+    width: 1600px;
+    height: 750px;
+    /* border-style: dotted;
+    border-color: red; */
+}
+
+#priceSec::before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    height: 750px;
+    width: 1600px;
+    background-image: url(./resources/images/glasses.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 1600px 1067px;
+    /* background-position: -50px 0px bottom; */
+}
+
+#priceMask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245, 245, 245, 0.8);
+}
+
+#priceTitle{
+    padding-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+#priceTitleL1Font{
+    margin: 0;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#priceTitleL2Font{
+    color: gray;
+    font-size: small;
+    padding-top: 10px;
+    margin: 0;
+    font-weight: 500;
+}
+
+#priceList{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 16.3%;
+    width: 83%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    filter: none;
+    z-index: 9999;
+    /* border-style: solid;
+    border-color: yellow; */
+}
+
+#priceBlock{
+    width: 24.5%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-right: 4%;
+    /* border-style: dotted;
+    border-color: yellow; */
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(
+            to right,
+            rgb(236, 236, 236) 5%,
+            transparent 5% 48%,
+            rgb(236, 236, 236) 48% 51%,
+            transparent 51%
+        ),
+        linear-gradient(
+            to bottom,
+            rgb(236, 236, 236) 5%,
+            transparent 5% 48%,
+            rgb(236, 236, 236) 48% 51%,
+            transparent 51%
+        ),
+        linear-gradient(
+            to left top,
+            transparent 49%,
+            rgb(236, 236, 236) 50% 51%,
+            transparent 51%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 49%,
+            rgb(236, 236, 236) 50% 51%,
+            transparent 51%
+        )
+        white
+    ;
+    background-size: 25px 25px;
+}
+
+#priceBlock > div:last-child{
+    margin-right: 0;
+}
+
+#planFont{
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-weight: 500;
+}
+
+#featureFont{
+    margin: 0;
+    padding-bottom: 6%;
+    font-size: 14px;
+}
+
+#priceFont{
+    width: 40%;
+    margin-left: 30%;
+    /* border-style: dotted;
+    border-color: black; */
+    font-size: x-large;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+#buttonFont{
+    width: 47%;
+    height: 10%;
+    color: white;
+    background-color: rgb(27, 59, 91);
+    margin-left: 26%;
+    border: 0;
+}
+
+#tryFreeSec{
+    width: 1600px;
+    background: url(./resources/images/notebook.jpg) no-repeat;
+    background-position: 0px -287px;
+    height: 480px;
+    background-size: cover;
+    text-align: center;
+    /* border-style: solid;
+    border-color: black; */
+}
+
+#tryFreeMask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 52, 85, 0.8);
+    /* background-color: rgba(0,0,139,0.5); */
+    
+}
+
+#tryFreeMask2{
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(25, 57, 86, 0.8); */
+    background-color: rgba(99, 95, 95, 0.5);
+    
+}
+
+#tryFreeBox{
+    padding-top: 9%;
+    /* vertical-align: middle; */
+}
+
+#tryFreeL1{
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    padding-top: 25px;
+}
+
+#tryFreeL2{
+    font-size: 13px; 
+    color: white;
+    margin: 0;
+    padding-top: 10px;
+    font-family: "Roboto", sans-serif;
+}
+
+#tryFreeButton{
+    background-color: rgb(245, 222, 78);
+    width: 200px;
+    height: 50px;
+    margin-top: 1.5%;
+    border: none;
+}
+
+#floor{
+    background-color: rgb(31, 37, 47);
+    width: 1600px;
+    height: 240px;
+    /* border-style: solid;
+    border-color: rgb(31, 37, 47); */
+    padding-top: 110px;
+    margin: 0;
+}
+
+#floorL1{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+#floorL2{
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+}
+
+#iconRow{
+    display: flex;
+    flex-direction: row;
+    margin-left: 620px;
+    margin-top: 35px;
+}
+
+#icon{
+    height: 30px;
+    width: 30px;
+    margin-right: 52px;
+}
